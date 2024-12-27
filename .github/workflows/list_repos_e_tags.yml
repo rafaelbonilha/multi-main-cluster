@@ -20,14 +20,16 @@ jobs:
       - name: Checkout repositorio
         uses: actions/checkout@v3
  
-      - name: Obtendo a lista dos repositorios
-        id: repos
-        run: |
-          curl -H "Authorization: token ${{ secrets.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 }}" \
-          -H "Accept: application/vnd.github.v3+json" \
-          "https://api.github.com/rafaelbonilha/repos?per_page=100" \
-          -o repos.json
+      - name: Set up GitHub CLI
+        uses: cli/cli-action@v1
  
+      - name: Obtendo a lista dos repositorios
+        run: |
+          ORGANIZATION="rafaelbonilha" # substitua pelo nome da organizacao
+          TOKEN="${{ secrets.GITHUB_TOKEN }}" # token do usuario/organizacao
+          curl -H "Authorization: token $TOKEN" \
+          "https://api.github.com/users/$USERNAME/repos?per_page=100" | jq '.[] | .name           
+  
       - name: Listando os repositorios
         run: |
           echo "Repositorios: " \
