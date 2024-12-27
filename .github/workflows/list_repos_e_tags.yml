@@ -27,7 +27,7 @@ jobs:
       - name: Obtendo a lista dos repositorios
         run: |
           ORGANIZATION="rafaelbonilha" # substitua pelo nome da organizacao
-          TOKEN="${{ secrets.GITHUB_TOKEN }}" # token do usuario/organizacao
+          TOKEN="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" # token do usuario/organizacao
           curl -H "Authorization: token $TOKEN" \
           "https://api.github.com/users/$ORGANIZATION/repos?per_page=100" | jq '.[] | .name           
   
