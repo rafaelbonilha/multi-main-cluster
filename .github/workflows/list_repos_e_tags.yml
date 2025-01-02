@@ -16,7 +16,7 @@ on:
  
 jobs:
   list-repos-e-tags:
-   runs-on: next-scale-set-temporario
+   runs-on: ubuntu-latest
    steps:
      - name: Checkout repositorio
        uses: actions/checkout@v3
